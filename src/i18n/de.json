@@ -42,7 +42,8 @@
     "heatLossCoeff": "Wärmedurchgangskoeffizienten",
     "heatingGains": "Heizung / Innere Gewinne",
     "coolingShading": "Kühlung / Verschattung",
-    "buildingView": "Gebäudeansicht"
+    "buildingView": "Gebäudeansicht",
+    "info": "Info"
   },
   "sidebar": {
     "preset": "Gebäudestandard",
@@ -200,7 +201,20 @@
     "internalGains": "Interne Gewinne",
     "heatingDemand": "Heizwärmebedarf",
     "coolingDemand": "Kühlenergiebedarf",
-    "months": ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
+    "months": [
+      "Jan",
+      "Feb",
+      "Mär",
+      "Apr",
+      "Mai",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Okt",
+      "Nov",
+      "Dez"
+    ]
   },
   "visualization": {
     "summer": "Sommer",
@@ -219,5 +233,37 @@
     "kWp": "kWp",
     "kWhPerKWp": "kWh/kWp",
     "kWhPerM2a": "kWh/(m²a)"
+  },
+  "info": {
+    "title": "Wie dieses Programm entstanden ist",
+    "intro": "HUUSanova ist im Institut für Bauwesen der HAW Kiel im Rahmen des Moduls „Gebäudesimulation“ entstanden. Der Code wurde mit KI-Unterstützung geschrieben (Claude Code von Anthropic, aktuelles Modell: Claude Opus 5). Diese Seite legt offen, wie viel Eingabe dafür nötig war und wie viel Code daraus entstanden ist – als Anschauungsmaterial dafür, wie sich Aufwand und Ergebnis beim Programmieren mit KI zueinander verhalten.",
+    "statPrompts": "Eingaben",
+    "statWords": "Wörter Eingabe",
+    "statLines": "Zeilen Code",
+    "statRatio": "Wort : Zeilen",
+    "chartInputTitle": "Eingabe je Arbeitssitzung",
+    "chartInputSub": "Geschätzte Wörter in Prompts und ToDo-Einträgen",
+    "chartCodeTitle": "Neuer Code je Arbeitssitzung",
+    "chartCodeSub": "Neu entstandene Zeilen in src/ (*.ts und *.tsx)",
+    "colDate": "Datum",
+    "colPrompts": "Eingaben",
+    "colWords": "Wörter",
+    "colLines": "Zeilen",
+    "colTopic": "Schwerpunkt",
+    "colTotal": "Gesamt",
+    "ratioNote": "ein Wort Eingabe je {{ratio}} Zeilen Code",
+    "readingTitle": "Wie die Grafik zu lesen ist",
+    "reading": "Die beiden Diagramme haben absichtlich getrennte Achsen: Wörter und Codezeilen unterscheiden sich um mehr als das Zwanzigfache, in einem gemeinsamen Diagramm wäre die Eingabe eine flache Linie am Nullpunkt. Auffällig ist der 15.07.: zwei Eingaben, kein neuer Code – an dem Tag ging es nur um Dokumentation. Und der 24.06. zeigt, dass der größte Teil des Programms aus einer einzigen Sitzung stammt. Die Zahl der Wörter sagt dabei wenig über die Qualität: entscheidend war, die fachlichen Anforderungen präzise zu formulieren und die Ergebnisse bauphysikalisch zu prüfen.",
+    "s1": "Erstimplementierung, Berechnungskern, 7 Reiter",
+    "s2": "Dokumentation, kein neuer Code",
+    "s3": "Umbau auf Tab-Layout, TGA nach GEG, Isometrie",
+    "s4": "Echte Kartengrafiken, globale Klimazonen",
+    "s5": "Veröffentlichung, teilbare Links, Info-Reiter",
+    "originTitle": "Ursprung",
+    "origin": "Vorbild ist CASAnova, entwickelt am Fachgebiet Bauphysik & Solarenergie der Universität Siegen. HUUSanova ist ein eigenständiger Nachbau als Web-Anwendung und steht in keiner Verbindung zu den ursprünglichen Autoren.",
+    "creditsTitle": "Bildnachweis",
+    "creditTryMap": "TRY-Klimaregionen Deutschland",
+    "creditWorldMap": "Thermische Klimazonen der Erde",
+    "creditsNote": "Beide Karten werden als Anschauungsmaterial im Lehrkontext verwendet und sind an Ort und Stelle verlinkt."
   }
 }

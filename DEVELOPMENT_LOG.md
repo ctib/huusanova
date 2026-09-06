@@ -9,15 +9,15 @@ Wie viele Prompts (Benutzereingaben) waren noetig, wie viel Code wurde generiert
 
 ## Zusammenfassung / Summary
 
-| Kennzahl | Session 1 (Jun 24) | Session 2 (Jul 15) | Session 3 (Aug 3) | Session 4 (Aug 4) | **Gesamt** |
-|----------|--------------------|--------------------|-------------------|-------------------|------------|
-| Prompts (Benutzereingaben) | 3 (+1 Klick) | 2 | 6 | 1 | **12 (+1 Klick)** |
-| Prompt-Woerter (geschaetzt) | ~160 | ~90 | ~180 | ~40 | **~470** |
-| Neue Code-Zeilen (src/) | 3.451 | - | +1.645 | +323 | **5.419** |
-| Neue Dateien (src/) | 42 | 0 | +6 neue, 8 modifiziert | +2 neue, 6 modifiziert | **50** |
-| Unit-Tests | 17 | 0 | 17 (angepasst) | 20 | **20** |
-| Build-Groesse (gzipped) | 397 KB | - | ~405 KB | ~405 KB (+316 KB Karten) | **~405 KB** |
-| Verhaeltnis Woerter : Zeilen | 1 : 15 | - | 1 : 10 | 1 : 8 | **1 : 11** |
+| Kennzahl | Session 1 (Jun 24) | Session 2 (Jul 15) | Session 3 (Aug 3) | Session 4 (Aug 4) | Session 5 (Sep 6) | **Gesamt** |
+|----------|--------------------|--------------------|-------------------|-------------------|-------------------|------------|
+| Prompts (Benutzereingaben) | 3 (+1 Klick) | 2 | 6 | 1 | 9 | **21 (+1 Klick)** |
+| Prompt-Woerter (geschaetzt) | ~160 | ~90 | ~180 | ~40 | ~155 | **~625** |
+| Neue Code-Zeilen (src/) | 3.451 | - | +1.645 | +323 | +697 | **6.116** |
+| Neue Dateien (src/) | 42 | 0 | +6 neue, 8 modifiziert | +2 neue, 6 modifiziert | +5 neue, 8 modifiziert | **57** |
+| Unit-Tests | 17 | 0 | 17 (angepasst) | 20 | 45 | **45** |
+| Build-Groesse (gzipped) | 397 KB | - | ~405 KB | ~405 KB (+316 KB Karten) | ~419 KB | **~419 KB** |
+| Verhaeltnis Woerter : Zeilen | 1 : 15 | - | 1 : 10 | 1 : 8 | 1 : 4 | **1 : 10** |
 
 ---
 
@@ -182,6 +182,43 @@ Wie viele Prompts (Benutzereingaben) waren noetig, wie viel Code wurde generiert
     ungenutzte Variablen/Importe und eine zu enge Signatur von `setNestedParam`). Aufgefallen
     ist es nur, weil in dieser Session erstmals wieder ein Produktionsbuild lief - `tsc --noEmit`
     prueft ueber die Solution-Datei nicht dieselben Projekte wie `tsc -b`. Behoben.
+
+---
+
+### Session 5: Veroeffentlichung und Verteilung (2026-09-06)
+
+Neun Eingaben, ~155 Woerter. Schwerpunkt war nicht neue Fachlichkeit, sondern
+die Frage "wie kommt das zu den Studierenden" - entsprechend niedriger liegt
+das Verhaeltnis Woerter zu Zeilen (1:4 statt 1:8 bis 1:15).
+
+- **Deployment-Faehigkeit**: `base: './'` und Kartenpfade ueber
+  `import.meta.env.BASE_URL`, damit die App aus einem Unterverzeichnis laeuft.
+  KaTeX lokal gebundelt statt per CDN (Offline-Faehigkeit).
+- **Versionskontrolle und Hosting**: Git-Repo angelegt, GitHub-Actions-Workflow
+  fuer GitHub Pages. Live unter https://ctib.github.io/huusanova/
+- **Teilbare Konfigurationen**: Gebaeudezustand im URL-Hash
+  (`lib/urlState.ts`, `lib/useUrlSync.ts`), Link-Button im Header. 19 neue Tests.
+- **Lehrkontext sichtbar gemacht**: Hinweis im Ergebnisreiter und im
+  CSV-Export, dass die Zahlen nicht fuer die Energieberatung taugen.
+- **Info-Reiter**: diese Zahlen als Grafik und Tabelle in der App selbst.
+- **ANLEITUNG-MOODLE.md** fuer die Verteilung im Kurs.
+
+Erkenntnisse:
+
+- **Ein Konfigurationsdetail entschied ueber die Verteilbarkeit.** Ohne
+  relative Pfade waere die Seite auf GitHub Pages weiss geblieben - der Build
+  lief lokal fehlerfrei, nur der Ort der Auslieferung war ein anderer. Wer
+  ausliefert, muss dort testen, wo ausgeliefert wird.
+- **Zwei absolute Pfade standen als Strings im Code** und wurden von der
+  Umstellung nicht erfasst. Ein Build-Werkzeug schreibt nur um, was es als
+  Pfad erkennt - Zeichenketten im Quelltext gehoeren nicht dazu.
+- **Ein laufender Entwicklungsserver hat ein `npm ci` zerlegt**: er hielt eine
+  native Bibliothek geladen, npm loeschte erst und scheiterte dann am
+  Ersetzen. Vor einem Neuinstallieren alle Prozesse beenden.
+- **Die Testumgebung deckt nicht alles ab.** Die Kodierung der URL ist
+  headless geprueft, die React-Verdrahtung nicht (Umgebung `node`, kein DOM).
+  Was nicht pruefbar ist, gehoert benannt und nicht stillschweigend als
+  erledigt verbucht.
 
 ---
 

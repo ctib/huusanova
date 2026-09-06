@@ -42,7 +42,8 @@
     "heatLossCoeff": "Heat Loss Coefficients",
     "heatingGains": "Heating / Internal Gains",
     "coolingShading": "Cooling / Shading",
-    "buildingView": "Building View"
+    "buildingView": "Building View",
+    "info": "Info"
   },
   "sidebar": {
     "preset": "Building Standard",
@@ -200,7 +201,20 @@
     "internalGains": "Internal Gains",
     "heatingDemand": "Heating Demand",
     "coolingDemand": "Cooling Demand",
-    "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    "months": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ]
   },
   "visualization": {
     "summer": "Summer",
@@ -219,5 +233,37 @@
     "kWp": "kWp",
     "kWhPerKWp": "kWh/kWp",
     "kWhPerM2a": "kWh/(m²a)"
+  },
+  "info": {
+    "title": "How this program came about",
+    "intro": "HUUSanova was created at the Institute of Civil Engineering at HAW Kiel as part of the “Building Simulation” module. The code was written with AI assistance (Claude Code by Anthropic, current model: Claude Opus 5). This page documents how much input was required and how much code resulted – as teaching material on how effort and outcome relate when programming with AI.",
+    "statPrompts": "Inputs",
+    "statWords": "Words of input",
+    "statLines": "Lines of code",
+    "statRatio": "Word : lines",
+    "chartInputTitle": "Input per working session",
+    "chartInputSub": "Estimated words in prompts and to-do entries",
+    "chartCodeTitle": "New code per working session",
+    "chartCodeSub": "Newly written lines in src/ (*.ts and *.tsx)",
+    "colDate": "Date",
+    "colPrompts": "Inputs",
+    "colWords": "Words",
+    "colLines": "Lines",
+    "colTopic": "Focus",
+    "colTotal": "Total",
+    "ratioNote": "one word of input per {{ratio}} lines of code",
+    "readingTitle": "How to read the charts",
+    "reading": "The two charts deliberately use separate axes: words and lines of code differ by more than a factor of twenty, so in a shared chart the input would be a flat line at zero. Note 15 July: two inputs, no new code – that day was documentation only. And 24 June shows that most of the program came out of a single session. Word count says little about quality: what mattered was stating the engineering requirements precisely and checking the results against building physics.",
+    "s1": "Initial implementation, calculation core, 7 tabs",
+    "s2": "Documentation, no new code",
+    "s3": "Rebuild to tab layout, HVAC per GEG, isometric view",
+    "s4": "Real map graphics, global climate zones",
+    "s5": "Publication, shareable links, info tab",
+    "originTitle": "Origin",
+    "origin": "The model is CASAnova, developed at the Building Physics & Solar Energy department of the University of Siegen. HUUSanova is an independent reimplementation as a web application and is not affiliated with the original authors.",
+    "creditsTitle": "Image credits",
+    "creditTryMap": "TRY climate regions of Germany",
+    "creditWorldMap": "Thermal climate zones of the Earth",
+    "creditsNote": "Both maps are used as illustrative teaching material and are linked at the point of use."
   }
 }

@@ -11,7 +11,16 @@ Allgemein:
        Monat, aus der Monatsbilanz abgeleitet - keine Norm-Heizlast nach DIN EN 12831),
        Energieklasse, HT'. Nicht im Ergebnisreiter (dort steht dieselbe Grafik gross);
        Ausschlussliste TABS_WITHOUT_BANNER in App.tsx - Info-Reiter dort spaeter ergaenzen.
-[ ] Reiter mit "Info" erstellen, Hinweis auf claude code und Inspiration von CASAnova (Uni Siegen) einfügen, auch dort eine Grafik erstellen, wie viel Input über Prompts / ToDo-Liste von mir selbst kam (zeitlich aufgeführt) und wie viele zeilen neuen Code dadurch erzeugt wurde (Darstellung Aufwand / Nutzen)
+[x] Reiter mit "Info" erstellen, Hinweis auf claude code und Inspiration von CASAnova (Uni Siegen) einfügen, auch dort eine Grafik erstellen, wie viel Input über Prompts / ToDo-Liste von mir selbst kam (zeitlich aufgeführt) und wie viele zeilen neuen Code dadurch erzeugt wurde (Darstellung Aufwand / Nutzen)
+    -> InfoTab.tsx + data/developmentHistory.ts (dort die Zahlen fortschreiben).
+       Zwei getrennte Balkendiagramme statt einer Grafik mit zwei y-Achsen:
+       Wörter und Codezeilen liegen um Faktor 20+ auseinander, gemeinsam
+       geplottet wäre die Eingabe eine flache Linie auf Null. Dazu eine
+       Tabellenansicht derselben Zahlen (barrierefrei, ohne Farbe lesbar).
+       Nennt HAW Kiel / Institut für Bauwesen, Modul "Gebäudesimulation",
+       Claude Opus 5, CASAnova (Uni Siegen) und den Bildnachweis.
+[ ] Info-Reiter fortschreiben: nach jeder weiteren Session eine Zeile in
+    developmentHistory.ts ergänzen (Zeilen zählen, Differenz eintragen)
 
 Reiter Klima / Standort
 [x] Standortauswahl mit Klickbarer Karte mit den 15 TRY-Klimaregionen für Deutschland (inkl. TRY-Nummern und Regionsnamen).

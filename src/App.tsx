@@ -10,6 +10,7 @@ import { WindowsTab } from '@/components/tabs/WindowsTab'
 import { OpaqueTab } from '@/components/tabs/OpaqueTab'
 import { TGATab } from '@/components/tabs/TGATab'
 import { ResultsTab } from '@/components/tabs/ResultsTab'
+import { InfoTab } from '@/components/tabs/InfoTab'
 import { useBuildingStore } from '@/store/buildingStore'
 import { useUrlSync } from '@/lib/useUrlSync'
 
@@ -21,13 +22,15 @@ const TABS = [
   'opaque',
   'tga',
   'results',
+  'info',
 ] as const
 
 type TabId = (typeof TABS)[number]
 
 // Reiter, die das Ergebnisbanner NICHT bekommen: der Ergebnisreiter zeigt
-// dieselbe Grafik bereits in voller Groesse (spaeter auch der Info-Reiter).
-const TABS_WITHOUT_BANNER: TabId[] = ['results']
+// dieselbe Grafik bereits in voller Groesse, der Info-Reiter handelt nicht
+// vom gerechneten Gebaeude.
+const TABS_WITHOUT_BANNER: TabId[] = ['results', 'info']
 
 const TAB_COMPONENTS: Record<TabId, React.FC> = {
   climate: ClimateTab,
@@ -37,6 +40,7 @@ const TAB_COMPONENTS: Record<TabId, React.FC> = {
   opaque: OpaqueTab,
   tga: TGATab,
   results: ResultsTab,
+  info: InfoTab,
 }
 
 function App() {
@@ -64,6 +68,7 @@ function App() {
     opaque: t('tabs.opaque'),
     tga: t('tabs.tga'),
     results: t('tabs.results'),
+    info: t('tabs.info'),
   }
 
   const ActiveComponent = TAB_COMPONENTS[activeTab]
