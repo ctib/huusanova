@@ -21,31 +21,33 @@ Der Inhalt von `dist/` ist alles, was verteilt wird.
 
 ---
 
-## Weg 1: Hosten + Moodle-Link (empfohlen)
+## Weg 1: Moodle-Link auf GitHub Pages (eingerichtet, empfohlen)
 
-Die App liegt auf einem Webserver, in Moodle steht nur ein Link darauf.
+Die App ist bereits veroeffentlicht:
 
-### 1. Hochladen
+**https://ctib.github.io/huusanova/**
 
-`dist/` auf einen Webserver kopieren, z.B.
+Das Deployment laeuft automatisch: bei jedem Push auf `main` baut GitHub
+Actions die App, laesst die Tests laufen und aktualisiert die Seite
+(`.github/workflows/deploy.yml`). Es ist kein manueller Upload noetig.
 
-- Hochschul-Webspace per SFTP nach `.../huusanova/`
-- GitHub Pages (Repo -> Settings -> Pages)
-- Netlify: Ordner `dist` auf https://app.netlify.com/drop ziehen
-
-Ein Unterverzeichnis ist ausdruecklich in Ordnung - die App verwendet
-relative Pfade und laeuft auch unter `hs-beispiel.de/kurs/huusanova/`.
-
-### 2. In Moodle verlinken
+### In Moodle verlinken
 
 Kurs -> *Material anlegen* -> **Link/URL**
 
 - **Name**: HUUSanova - Gebaeudeenergiebilanz
-- **Externe URL**: die Adresse aus Schritt 1
+- **Externe URL**: `https://ctib.github.io/huusanova/`
 - **Darstellung**: *Neues Fenster* (die App braucht Platz, in einem
   eingebetteten Frame wird es eng)
 
-### 3. Was die Studierenden tun
+### Alternative Hoster
+
+Falls die Seite spaeter auf den Hochschul-Webspace umziehen soll: `dist/`
+per SFTP hochladen, ein Unterverzeichnis ist ausdruecklich in Ordnung. Die
+App verwendet relative Pfade und laeuft auch unter
+`hs-beispiel.de/kurs/huusanova/`.
+
+### Was die Studierenden tun
 
 Auf den Link klicken. Fertig - keine Installation, kein Login, laeuft im
 Browser auf Laptop und Tablet.
@@ -125,12 +127,13 @@ Kurs -> *Material anlegen* -> **IMS-Content-Package** -> ZIP hochladen.
 
 ## Aktualisieren
 
-```bash
-npm run build
-```
+Weg 1: `git push` auf `main` - GitHub Actions baut und veroeffentlicht
+automatisch, der Moodle-Link bleibt unveraendert. Der Fortschritt steht
+unter https://github.com/ctib/huusanova/actions. Schlagen die Tests fehl,
+wird **nicht** deployt und die alte Version bleibt online.
 
-Weg 1: `dist/` erneut hochladen, der Moodle-Link bleibt unveraendert.
-Weg 2: neues ZIP schnueren und das IMS-Paket in Moodle ersetzen.
+Weg 2: `npm run build`, neues ZIP schnueren und das IMS-Paket in Moodle
+ersetzen.
 
 Studierende sollten nach einer Aktualisierung einmal hart neu laden
 (Strg+F5), falls der Browser noch die alte Version im Cache hat.
@@ -144,7 +147,7 @@ Gebaeudezustand enthaelt - Geometrie, U-Werte, Fenster, TGA, Standort und
 Rechenverfahren. Beispiel:
 
 ```
-.../huusanova/#geometry.length=12&envelope.wall=0.2&m=SIA380
+https://ctib.github.io/huusanova/#geometry.length=12&envelope.wall=0.2&m=SIA380
 ```
 
 Nur die vom Standard abweichenden Werte stehen drin, deshalb bleiben die

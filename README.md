@@ -1,5 +1,7 @@
 # HUUSanova
 
+**Live: https://ctib.github.io/huusanova/**
+
 Moderner Web-Nachbau des klassischen CASAnova-Programms (Uni Siegen, Fachgebiet Bauphysik & Solarenergie) zur schnellen Gebaeudeenergiebilanzierung. Entwickelt als Lehrtool, bei dem Studierende ueber Schieberegler die Bauphysik interaktiv anpassen und die Auswirkungen auf Heiz- und Kuehlenergiebedarf sofort sehen koennen.
 
 **HUUSanova** = HUUS (plattdeutsch: Haus) + anova - eine norddeutsche Hommage an den Casanova-Wortwitz.
@@ -97,9 +99,14 @@ Die App laeuft dann unter `http://localhost:5173`.
 
 ## Deployment / Verteilung an Studierende
 
+Die App laeuft unter https://ctib.github.io/huusanova/ und wird bei jedem Push
+auf `main` automatisch neu gebaut und veroeffentlicht
+(`.github/workflows/deploy.yml`; die Tests laufen vorher, ein roter Test
+verhindert das Deployment).
+
 Die App ist rein clientseitig - kein Backend, keine API-Keys, keine Datenbank.
-`npm run build` erzeugt in `dist/` eine vollstaendig statische Seite, die auf
-jeden Webserver kopiert werden kann (Uni-Webspace, GitHub Pages, Netlify).
+`npm run build` erzeugt in `dist/` eine vollstaendig statische Seite, die auch
+auf jeden anderen Webserver kopiert werden kann (Uni-Webspace, Netlify).
 
 Durch `base: './'` in `vite.config.ts` sind alle Pfade relativ, die Seite laeuft
 also auch aus einem Unterverzeichnis (`example.de/kurs/huusanova/`). Es gibt
