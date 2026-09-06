@@ -146,7 +146,8 @@
     "location": "Location",
     "country": "Country",
     "monthlyData": "Monthly Climate Data",
-    "month": "Month"
+    "month": "Month",
+    "mapSource": "Map source"
   },
   "tga": {
     "heatingSystem": "Heating System",
@@ -187,7 +188,10 @@
     "bannerCollapse": "Collapse results chart",
     "bannerExpand": "Expand results chart",
     "exportCsv": "CSV",
-    "exportCsvTitle": "Download monthly balance as CSV file"
+    "exportCsvTitle": "Download monthly balance as CSV file",
+    "energyScaleNote": "Illustrative reproduction of the efficiency scale – not an energy performance certificate under the German GEG.",
+    "disclaimerTitle": "For teaching and illustration only.",
+    "disclaimerBody": "These results come from heavily simplified monthly balance methods and are meant to make relationships visible. They are not suitable for energy consulting, for compliance verification under the German GEG, or for energy performance certificates."
   },
   "chart": {
     "transmission": "Transmission Losses",

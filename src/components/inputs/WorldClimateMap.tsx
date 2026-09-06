@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useBuildingStore } from '@/store/buildingStore'
 import { worldClimateLocations, worldZoneColors } from '@/data/climateData/world'
 
@@ -36,6 +37,7 @@ function rgbCss(rgb: [number, number, number]) {
 }
 
 export function WorldClimateMap() {
+  const { t } = useTranslation()
   const climateLocationId = useBuildingStore((s) => s.params.climateLocationId)
   const setNestedParam = useBuildingStore((s) => s.setNestedParam)
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -146,8 +148,8 @@ export function WorldClimateMap() {
             : 'Klimazone auf der Karte oder in der Legende wählen'}
       </div>
 
-      <div className="text-[9px] text-muted-foreground/70">
-        Kartengrundlage:{' '}
+      <div className="text-[10px] text-muted-foreground">
+        {t('climate.mapSource')}:{' '}
         <a
           href="https://jam-school.de/thermische-klimazonen-klimazonen-der-erde-%E2%80%A2-definition-und-ubersicht-%C2%B7-mit-video/"
           target="_blank"

@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Download } from 'lucide-react'
+import { Download, AlertTriangle } from 'lucide-react'
 import { useBuildingStore } from '@/store/buildingStore'
 import { MonthlyBalanceChart } from '@/components/charts/MonthlyBalanceChart'
 import { SankeyDiagram } from '@/components/charts/SankeyDiagram'
@@ -27,6 +27,19 @@ export function ResultsTab() {
 
   return (
     <div className="max-w-7xl mx-auto space-y-6">
+      {/* Bewusst oberhalb der Kennzahlen: der Hinweis soll gelesen werden,
+          bevor jemand die Zahlen weiterverwendet. */}
+      <div
+        role="note"
+        className="flex items-start gap-2.5 rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm dark:border-amber-900 dark:bg-amber-950/20"
+      >
+        <AlertTriangle className="mt-0.5 w-4 h-4 shrink-0 text-amber-600 dark:text-amber-500" />
+        <p className="text-amber-900 dark:text-amber-200">
+          <span className="font-semibold">{t('output.disclaimerTitle')}</span>{' '}
+          {t('output.disclaimerBody')}
+        </p>
+      </div>
+
       {/* Key metrics row */}
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
         <MetricCard
@@ -109,6 +122,11 @@ export function ResultsTab() {
         <div className="rounded-lg border border-border p-4">
           <h3 className="font-semibold text-sm mb-3">{t('output.energyScale')}</h3>
           <EnergyScaleChart />
+          {/* Die Skala sieht einem echten Energieausweis am aehnlichsten und
+              wird am ehesten dafuer gehalten - daher hier noch einmal. */}
+          <p className="mt-3 text-[11px] text-muted-foreground">
+            {t('output.energyScaleNote')}
+          </p>
         </div>
 
         {/* Building Visualization */}

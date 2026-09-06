@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useBuildingStore } from '@/store/buildingStore'
 import { climateLocations } from '@/data/climateData/germany'
 
@@ -31,6 +32,7 @@ const stationPixels: Record<string, { x: number; y: number }> = {
 }
 
 export function GermanyClimateMap() {
+  const { t } = useTranslation()
   const climateLocationId = useBuildingStore((s) => s.params.climateLocationId)
   const setNestedParam = useBuildingStore((s) => s.setNestedParam)
   const [hoveredId, setHoveredId] = useState<string | null>(null)
@@ -93,8 +95,8 @@ export function GermanyClimateMap() {
           : 'Referenzstation auf der Karte anklicken'}
       </div>
 
-      <div className="text-[9px] text-center text-muted-foreground/70">
-        Kartengrundlage:{' '}
+      <div className="text-[10px] text-center text-muted-foreground">
+        {t('climate.mapSource')}:{' '}
         <a
           href="https://www.caala.de/lexikon/klimaregion-din-v-18599"
           target="_blank"

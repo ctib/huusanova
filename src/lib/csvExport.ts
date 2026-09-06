@@ -53,8 +53,14 @@ export function monthlyBalanceToCsv(
     num(results.totals.coolingDemand / totalHours, 3),
   ].join(';')
 
+  // Der Hinweis gehoert in die Datei, nicht nur auf den Bildschirm: eine
+  // exportierte CSV landet spaeter in Tabellen und Berichten, wo der
+  // Zusammenhang zum Lehrtool nicht mehr erkennbar waere.
   const meta = [
     `# HUUSanova - Monatsbilanz`,
+    `# ACHTUNG: Nur fuer Lehre und Veranschaulichung.`,
+    `# Stark vereinfachtes Monatsbilanzverfahren - nicht fuer Energieberatung,`,
+    `# Nachweise nach GEG oder Energieausweise geeignet.`,
     `# Standort;${climate.name}${climate.regionName ? ` (${climate.regionName})` : ''}`,
     `# Bezugsflaeche A_N [m2];${num(results.netFloorArea, 1)}`,
     `# Huellflaeche A_E [m2];${num(results.envelopeArea, 1)}`,

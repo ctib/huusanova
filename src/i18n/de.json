@@ -146,7 +146,8 @@
     "location": "Standort",
     "country": "Land",
     "monthlyData": "Monatliche Klimadaten",
-    "month": "Monat"
+    "month": "Monat",
+    "mapSource": "Kartengrundlage"
   },
   "tga": {
     "heatingSystem": "Wärmeerzeuger",
@@ -187,7 +188,10 @@
     "bannerCollapse": "Ergebnisgrafik einklappen",
     "bannerExpand": "Ergebnisgrafik ausklappen",
     "exportCsv": "CSV",
-    "exportCsvTitle": "Monatsbilanz als CSV-Datei herunterladen"
+    "exportCsvTitle": "Monatsbilanz als CSV-Datei herunterladen",
+    "energyScaleNote": "Nachbildung der Effizienzskala zur Veranschaulichung – kein Energieausweis im Sinne des GEG.",
+    "disclaimerTitle": "Nur für Lehre und Veranschaulichung.",
+    "disclaimerBody": "Die Ergebnisse stammen aus stark vereinfachten Monatsbilanzverfahren und dienen dazu, Zusammenhänge sichtbar zu machen. Sie sind nicht für die Energieberatung, für Nachweise nach GEG oder für Energieausweise geeignet."
   },
   "chart": {
     "transmission": "Transmissionsverluste",
