@@ -95,6 +95,20 @@ npm run preview
 
 Die App laeuft dann unter `http://localhost:5173`.
 
+## Deployment / Verteilung an Studierende
+
+Die App ist rein clientseitig - kein Backend, keine API-Keys, keine Datenbank.
+`npm run build` erzeugt in `dist/` eine vollstaendig statische Seite, die auf
+jeden Webserver kopiert werden kann (Uni-Webspace, GitHub Pages, Netlify).
+
+Durch `base: './'` in `vite.config.ts` sind alle Pfade relativ, die Seite laeuft
+also auch aus einem Unterverzeichnis (`example.de/kurs/huusanova/`). Es gibt
+keine Laufzeit-Abhaengigkeit zum Internet - KaTeX ist mitgebundelt.
+
+Wichtig: Ein blosses Oeffnen von `dist/index.html` per Doppelklick funktioniert
+**nicht** - ES-Module laufen nicht ueber `file://`. Es braucht immer einen
+Webserver (lokal genuegt `npm run preview`).
+
 ## Berechnungsgrundlage
 
 ### Heizwaermebedarf (EN 832 / ISO 13790)
