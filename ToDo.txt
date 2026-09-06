@@ -1,0 +1,53 @@
+Allgemein:
+[ ] Link zum CASAnova projekt und Uni Siegen (Bauphysik) als Easteregg verstecken. Vielleicht, dass "nova" in HUUSanova ein versteckter link dahin ist?
+[x] Monatsbilanz und Heiz / Kühlleistung in allen Reitern ganz unten als breites Banner anordnen
+    -> ResultsBanner.tsx, in App.tsx unter dem <main>-Bereich, ein-/ausklappbar.
+       Kennwerte: Heizwärmebedarf, Kühlenergiebedarf, Heiz-/Kühlleistung (Ø stärkster
+       Monat, aus der Monatsbilanz abgeleitet - keine Norm-Heizlast nach DIN EN 12831),
+       Energieklasse, HT'. Nicht im Ergebnisreiter (dort steht dieselbe Grafik gross);
+       Ausschlussliste TABS_WITHOUT_BANNER in App.tsx - Info-Reiter dort spaeter ergaenzen.
+[ ] Reiter mit "Info" erstellen, Hinweis auf claude code und Inspiration von CASAnova (Uni Siegen) einfügen, auch dort eine Grafik erstellen, wie viel Input über Prompts / ToDo-Liste von mir selbst kam (zeitlich aufgeführt) und wie viele zeilen neuen Code dadurch erzeugt wurde (Darstellung Aufwand / Nutzen)
+
+Reiter Klima / Standort
+[x] Standortauswahl mit Klickbarer Karte mit den 15 TRY-Klimaregionen für Deutschland (inkl. TRY-Nummern und Regionsnamen).
+    -> jetzt mit der Original-Grafik (caala.de, DIN V 18599), Hotspots auf den grünen Referenzstationen
+[x] auch globale Klimazonenauswahl ermöglichen
+    -> Weltkarte "Thermische Klimazonen" (jam-school.de), Klick per Pixel-Farberkennung,
+       5 Zonen (Polar / Subpolar / Gemäßigt / Subtropen / Tropen) mit Referenz-Monatsdaten
+[ ] Import für eigene DWD und epw Wetterdatensätze vorsehen (weltweit)
+[ ] gleiches für Schweiz (Karte analog Deutschland)
+[ ] TRY 13: Datensatz heißt Mühldorf, Kartengrafik beschriftet die Station als Passau - klären/vereinheitlichen
+[ ] Weltzonen-Monatsdaten sind repräsentative Lehrdatensätze - später durch echte epw-Daten ersetzen
+
+Geometrie
+[x] Isometrieansicht vollständig (vordere Wandfläche / Giebel korrekt dargestellt)
+[x] 4 parametrierbare Dachformen integriert: Satteldach, Walmdach, Flachdach, Pultdach (mit Neigungsregler 10-55°)
+[x] Nordpfeil "auf den Boden gelegt" (isometrische Ellipse auf Grundebene) und Ausrichtung variabel (Slider + direkte Eingabe in Isometrie)
+[x] Kellergeschoss hinzugefügt (Darstellung unterhalb z=0, Schraffur für unbeheizt)
+[x] DG und KG als "unbeheizt" auswählbar (Checkboxen in Gebäudezonen-Panel)
+[x] A/V-Verhältnis als Thermometer mit Farbgradient (grün-gelb-rot) und Markierung für Kugel / Würfel / Ist-Wert
+[x] Architektonische Größen: BGF, A_N (Nettogrundfläche), V_e (beheiztes Volumen), A_E (Hüllfläche), Gesamthöhe, Fassadenflächen N/S/O/W
+[x] Grundstücksfläche als optionales manuelles Eingabefeld (GFZ/GRZ-Kennwerte)
+[x] Keller-/Dachgeschoss-Toggles in Energieberechnung verdrahten (aktuell nur UI)
+[x] Dachgeschoss farblich anpassen, wenn es beheizt ist.
+
+Fenster
+[x] u-Wert für die Fenster hier auch einstellbar
+
+Opake Flächem
+[x] Speichermassen Analog zu "Innenraum"
+
+Berechnung
+[x] NaN-Fix: Bei Monatsmitteln oberhalb der Heiz-Solltemperatur (Tropen) wurde das
+    Gewinn/Verlust-Verhältnis unendlich -> Ausnutzungsgrad NaN. Jetzt abgefangen + Regressionstests.
+
+Ergebnisse
+[x] Monatsbilanzen als *.csv exportierbar
+    -> lib/csvExport.ts + Button im Ergebnisreiter. Nachtrag: die i18n-Keys
+       output.exportCsv / .exportCsvTitle fehlten, der Button zeigte den rohen Key.
+
+Build
+[x] "npm run build" war seit Session 3 kaputt (6 TS-Fehler: ungenutzte Variablen/Imports,
+    setNestedParam akzeptierte kein boolean). Behoben - Produktionsbuild läuft wieder.
+    Merke: "npx tsc --noEmit" prüft NICHT dasselbe wie "tsc -b" im Build. Vor Feierabend
+    immer "npm run build" laufen lassen.
