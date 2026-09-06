@@ -11,6 +11,7 @@ import { OpaqueTab } from '@/components/tabs/OpaqueTab'
 import { TGATab } from '@/components/tabs/TGATab'
 import { ResultsTab } from '@/components/tabs/ResultsTab'
 import { useBuildingStore } from '@/store/buildingStore'
+import { useUrlSync } from '@/lib/useUrlSync'
 
 const TABS = [
   'climate',
@@ -43,6 +44,9 @@ function App() {
   const recompute = useBuildingStore((s) => s.recompute)
   const [showGrundlagen, setShowGrundlagen] = useState(false)
   const [activeTab, setActiveTab] = useState<TabId>('climate')
+
+  // Konfiguration aus dem Link uebernehmen bzw. in den Link schreiben.
+  useUrlSync()
 
   useEffect(() => {
     recompute()

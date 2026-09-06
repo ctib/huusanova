@@ -6,7 +6,10 @@
   "header": {
     "method": "Calculation Method",
     "language": "Language",
-    "info": "Fundamentals"
+    "info": "Fundamentals",
+    "share": "Link",
+    "shareTitle": "Copy a link to this configuration",
+    "shareCopied": "Copied"
   },
   "tabs": {
     "climate": "Climate / Location",

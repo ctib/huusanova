@@ -4,6 +4,7 @@ import { calculateEN832 } from '@/calculation/en832'
 import { calculateSIA380 } from '@/calculation/sia380'
 import { calculateDIN18599 } from '@/calculation/din18599'
 import { getClimateLocationById } from '@/data/climateData'
+import type { SharedState } from '@/lib/urlState'
 
 export type CalculationMethod = 'EN832' | 'SIA380' | 'DIN18599'
 
@@ -19,10 +20,11 @@ interface BuildingStore {
   setMethod: (method: CalculationMethod) => void
   setPreset: (presetId: string) => void
   setSeasonView: (view: 'winter' | 'summer') => void
+  hydrate: (state: SharedState) => void
   recompute: () => void
 }
 
-const defaultParams: BuildingParams = {
+export const defaultParams: BuildingParams = {
   geometry: {
     length: 10,
     width: 10,
@@ -80,11 +82,21 @@ const defaultParams: BuildingParams = {
 
 let debounceTimer: ReturnType<typeof setTimeout> | null = null
 
+export const defaultMethod: CalculationMethod = 'EN832'
+export const defaultPresetId: string | null = 'EnEV2014'
+
+/** Referenzzustand fuer den Abgleich mit der URL (nur Abweichungen davon werden kodiert). */
+export const defaultSharedState: SharedState = {
+  params: defaultParams,
+  method: defaultMethod,
+  presetId: defaultPresetId,
+}
+
 export const useBuildingStore = create<BuildingStore>((set, get) => ({
   params: defaultParams,
   results: null,
-  method: 'EN832',
-  presetId: 'EnEV2014',
+  method: defaultMethod,
+  presetId: defaultPresetId,
   seasonView: 'winter',
 
   setParam: (key, value) => {
@@ -121,6 +133,12 @@ export const useBuildingStore = create<BuildingStore>((set, get) => ({
 
   setSeasonView: (view) => {
     set({ seasonView: view })
+  },
+
+  // Zustand aus einem geteilten Link uebernehmen (siehe lib/urlState.ts).
+  hydrate: ({ params, method, presetId }) => {
+    set({ params, method, presetId })
+    get().recompute()
   },
 
   recompute: () => {

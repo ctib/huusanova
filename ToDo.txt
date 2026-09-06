@@ -1,4 +1,9 @@
 Allgemein:
+[x] Gebaeudezustand in der URL serialisieren (Reload-fest, Konfiguration teilbar)
+    -> lib/urlState.ts (Kodierung nur der Abweichungen vom Default, lesbare
+       Punkt-Pfade im Hash) + lib/useUrlSync.ts (Hydrieren beim Start,
+       debounced replaceState) + Link-Button im Header. 17 Tests.
+[x] Anleitung zur Verteilung ueber Moodle -> ANLEITUNG-MOODLE.md
 [ ] Link zum CASAnova projekt und Uni Siegen (Bauphysik) als Easteregg verstecken. Vielleicht, dass "nova" in HUUSanova ein versteckter link dahin ist?
 [x] Monatsbilanz und Heiz / Kühlleistung in allen Reitern ganz unten als breites Banner anordnen
     -> ResultsBanner.tsx, in App.tsx unter dem <main>-Bereich, ein-/ausklappbar.

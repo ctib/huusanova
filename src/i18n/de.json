@@ -6,7 +6,10 @@
   "header": {
     "method": "Berechnungsmethode",
     "language": "Sprache",
-    "info": "Grundlagen"
+    "info": "Grundlagen",
+    "share": "Link",
+    "shareTitle": "Link zu dieser Konfiguration kopieren",
+    "shareCopied": "Kopiert"
   },
   "tabs": {
     "climate": "Klima / Standort",

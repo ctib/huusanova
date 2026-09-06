@@ -109,6 +109,24 @@ Wichtig: Ein blosses Oeffnen von `dist/index.html` per Doppelklick funktioniert
 **nicht** - ES-Module laufen nicht ueber `file://`. Es braucht immer einen
 Webserver (lokal genuegt `npm run preview`).
 
+Fuer die Verteilung ueber Moodle siehe [`ANLEITUNG-MOODLE.md`](./ANLEITUNG-MOODLE.md).
+
+## Konfiguration teilen
+
+Der aktuelle Gebaeudezustand steht im URL-Hash, der **Link**-Button oben rechts
+kopiert ihn. Ein Reload geht damit nicht mehr verloren, und Konfigurationen
+lassen sich als Link weitergeben:
+
+```
+.../#geometry.length=12&envelope.wall=0.2&m=SIA380
+```
+
+Kodiert werden nur Abweichungen vom Standard, was die Links kurz haelt und
+aeltere Links gueltig laesst, wenn spaeter Parameter dazukommen. Unbekannte
+oder unplausible Eintraege werden verworfen - ein kaputter Link zeigt die
+Standardkonfiguration statt einer leeren Seite. Implementierung in
+`src/lib/urlState.ts`, Synchronisation in `src/lib/useUrlSync.ts`.
+
 ## Berechnungsgrundlage
 
 ### Heizwaermebedarf (EN 832 / ISO 13790)
